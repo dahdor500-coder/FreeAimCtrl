@@ -12,7 +12,7 @@ static void hook2(void* self, void* e, bool d) {}
 
 static bool HookSym(const char* sym, void* hook, void** orig)
 {
-    void* addr = aml->GetSym(hGTASA, sym);
+    void* addr = (void*)aml->GetSym(hGTASA, sym);
     if (!addr) { logger->Error("Symbol not found: %s", sym); return false; }
     aml->Hook(addr, hook, orig);
     logger->Info("Hooked: %s", sym);
